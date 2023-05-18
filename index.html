@@ -1,1 +1,77 @@
+ <button onclick="addClick(clickingpower)">pizza <img src="./bored-slice-of-pizza-cartoon-isolated-on-white-2AHM88T.jpg"></button>  <p  id="counter">0</p> 
+ <button id="upgrade1" onclick="buyUpgrade1()">+10 pizzas/sec | 50 pizzas</button>
+ <button id="upgrade2" onclick="buyUpgrade2()">+50 pizzas/sec | 80 pizzas</button>      
+ <button id="upgrade3" onclick="buyupgrade3()">+2 pizzas/click | 5 pizzas</button>       
+ <button id="upgrade4" onclick="buyupgrade4()">+100 pizzas/sec | 500 pizzas</button>
 
+<script> 
+ 
+ var upgrade4cost = 500; 
+ var upgrade4s = 0; 
+
+var clicks = 0;
+var clickingpower = 1;
+
+var upgrade3cost = 5; 
+
+
+var upgrade2Cost = 80;
+var upgrade2s = 0;
+
+var upgrade1s = 0;
+var upgrade1Cost = 50;
+
+function buyUpgrade1() {
+    if (clicks >= upgrade1Cost) {
+        clicks -= upgrade1Cost;
+        upgrade1s++;
+        upgrade1Cost = Math.round(upgrade1Cost * 1.25);
+        document.getElementById("upgrade1").innerHTML = "+10 clicks/sec | " + upgrade1Cost + " pizzas";
+    }
+}   
+function buyUpgrade2() {
+    if (clicks >= upgrade2Cost)  { 
+        clicks -= upgrade2Cost;   
+        upgrade2s++;
+        upgrade2Cost = Math.round(upgrade2Cost * 1.50); 
+        document.getElementById("upgrade2").innerHTML = "+50 clicks/sec | " + upgrade2Cost + " pizzas";
+    } 
+
+}
+function buyupgrade3() {
+    if (clicks >= upgrade3cost) { 
+        clicks -= upgrade3cost;
+        clickingpower++;
+        upgrade3cost = Math.round(upgrade3cost * 2); 
+        document.getElementById("upgrade3").innerHTML = "+2 click/click | " + upgrade3cost + " pizzas"; 
+    }
+}
+function buyupgrade4() {
+    if (clicks >= upgrade4cost)  {
+        clicks -= upgrade4cost;
+        upgrade4s++; 
+        upgrade4cost = Math.round(upgrade4cost * 1); 
+        document.getElementById("upgrade4").innerHTML = "+100 clicks/sec | " + upgrade4cost + " pizzas"; 
+    }
+}
+
+    
+
+
+function addClick(amount) {
+    clicks += amount;
+    document.getElementById("counter").innerHTML = clicks;
+}     
+setInterval(function() {
+    clicks += upgrade1s * 10 + upgrade2s * 50 + upgrade4s * 100;
+    document.getElementById("counter").innerHTML = clicks;
+}, 1000)
+ 
+ </script>
+ <style>
+ button {
+    color:rgb(255, 132, 0);
+    width:100px;
+    height:50px
+}  
+ </style>
