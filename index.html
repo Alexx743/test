@@ -1,11 +1,15 @@
- <button onclick="addClick(clickingpower)">pizza <img src="./bored-slice-of-pizza-cartoon-isolated-on-white-2AHM88T.jpg"></button>  <p  id="counter">0</p> 
+ <button onclick="addClick(clickingpower)">pizza <img width="80px" height="80px"src="./bored-slice-of-pizza-cartoon-isolated-on-white-2AHM88T.jpg"></button>  <p  id="counter">0</p> 
  <button id="upgrade1" onclick="buyUpgrade1()">+10 pizzas/sec | 50 pizzas</button>
  <button id="upgrade2" onclick="buyUpgrade2()">+50 pizzas/sec | 80 pizzas</button>      
  <button id="upgrade3" onclick="buyupgrade3()">+2 pizzas/click | 5 pizzas</button>       
  <button id="upgrade4" onclick="buyupgrade4()">+100 pizzas/sec | 500 pizzas</button>
+ 
 
 <script> 
- 
+
+var upgrade5cost = 100
+var upgrade5s = 0; 
+
  var upgrade4cost = 500; 
  var upgrade4s = 0; 
 
@@ -58,10 +62,12 @@ function buyupgrade4() {
     
 
 
-function addClick(amount) {
+function addClick(amount){
     clicks += amount;
-    document.getElementById("counter").innerHTML = clicks;
-}     
+    document.getElementById("counter").innerHTML = clicks; 
+}
+    
+     
 setInterval(function() {
     clicks += upgrade1s * 10 + upgrade2s * 50 + upgrade4s * 100;
     document.getElementById("counter").innerHTML = clicks;
